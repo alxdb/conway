@@ -24,7 +24,7 @@ public:
 	};
 
 	void update() {
-		std::clock_t start = std::clock();
+		std::time_t start = std::time();
 		std::vector<std::vector<bool>> buffer = grid;
 
 		for (size_t i = 0; i < grid.size(); i++) {

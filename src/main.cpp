@@ -15,7 +15,8 @@ std::vector<std::pair<int, int>> init;
 int main() {
 	int rows, cols;
 	int row = 0, col = 0;
-	int delay = 100;
+	int delay = 50000;
+	double clocks_per_us = (double)(CLOCKS_PER_SEC / 1000000);
 
 	initscr();
 	noecho();
@@ -61,9 +62,12 @@ int main() {
 		if (row == rows - 1 && col == cols - 1) {
 			grid.update();
 			state = grid.getState();
-			double elapsed = (std::clock() - start) / (double)(CLOCKS_PER_SEC / 1000); 
-			mvprintw(0, 0, "%f", elapsed);
-			usleep(delay);
+			double elapsed = (std::clock() - start) / clocks_per_us; 
+			mvprintw(0, 0, "%f.0 ms update", elapsed);
+			if (elapsed < delay) {
+				usleep(delay - elapsed);
+				mvprintw(1, 0, "%d fps", (1000000 / delay));
+			}
 			start = std::clock();
 			refresh();
 		}

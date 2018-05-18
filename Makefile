@@ -2,7 +2,7 @@ BUILD_DIR := ./.build
 TARGET := conway
 .DEFAULT_GOAL := $(TARGET)
 
-CXXFLAGS = -Iinc -g
+CXXFLAGS = -Iinc -g -std=gnu++11
 LDLIBS = -lncurses
 
 $(BUILD_DIR):
