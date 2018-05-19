@@ -24,7 +24,7 @@ public:
 	};
 
 	void update() {
-		std::time_t start = std::time();
+		std::time_t start = std::time(nullptr);
 		std::vector<std::vector<bool>> buffer = grid;
 
 		for (size_t i = 0; i < grid.size(); i++) {
@@ -54,7 +54,7 @@ public:
 		}
 
 		grid = buffer;
-		double elapsed = (std::clock() - start) / (double)(CLOCKS_PER_SEC / 1000); 
+		double elapsed = (std::time(nullptr) - start) / (double)(CLOCKS_PER_SEC / 1000); 
 		logStream << "Time: " << elapsed << " ms" << std::endl;
 	}
 
