@@ -33,8 +33,8 @@ int main() {
 	}
 
 	srand(std::clock());
-	for (int i = 0; i < rows; i++) {
-		for (int j = 0; j < cols; j++) {
+	for (int i = rows / 4; i < (3 * rows) / 4; i++) {
+		for (int j = cols / 4; j < (3 * cols) / 4; j++) {
 			if (rand() > RAND_MAX / 2) {
 				init.push_back({i, j});
 			}
