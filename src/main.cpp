@@ -9,7 +9,6 @@
 
 #include "grid.hpp"
 
-// std::vector<std::pair<int, int>> init = {{-1, 0}, {0, 0}, {1, 0}};
 std::vector<std::pair<int, int>> init;
 
 int main() {
@@ -24,13 +23,6 @@ int main() {
 	curs_set(0);
 
 	getmaxyx(stdscr, rows, cols);
-	{
-		std::pair<int, int> middle = {rows / 2, cols / 2};
-		for (std::pair<int, int>& p : init) {
-			p.first += middle.first;
-			p.second += middle.second;
-		}
-	}
 
 	srand(std::clock());
 	for (int i = rows / 4; i < (3 * rows) / 4; i++) {
@@ -45,6 +37,7 @@ int main() {
 
 	std::clock_t start = std::clock();
 	std::vector<std::vector<bool>> state = grid.getState();
+	// Drawing function
 	while (1) {
 
 		if (state[row][col]) {
@@ -71,7 +64,6 @@ int main() {
 			start = std::clock();
 			refresh();
 		}
-		// usleep(10);
 	}
 
 	endwin();

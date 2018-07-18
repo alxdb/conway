@@ -5,6 +5,7 @@
 #include <ctime>
 
 class Grid {
+private:
 	std::vector<std::vector<bool>> grid;
 	std::ofstream logStream;
 public:
@@ -39,6 +40,7 @@ public:
 					}
 				}
 
+				// so as to not count self
 				if (grid[i][j]) {
 					neighbours -= 1;
 				}
@@ -54,7 +56,7 @@ public:
 		}
 
 		grid = buffer;
-		double elapsed = (std::time(nullptr) - start) / (double)(CLOCKS_PER_SEC / 1000); 
+		double elapsed = (std::time(nullptr) - start) / (double)(CLOCKS_PER_SEC / 1000);
 		logStream << "Time: " << elapsed << " ms" << std::endl;
 	}
 
