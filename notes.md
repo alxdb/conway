@@ -18,3 +18,5 @@ Functions:
 
 should translate between terminal space (0,0) is top left and grid space (0,0) is middle
 not in grid, that is implementation specific.
+
+Cell object is essentially just a bool

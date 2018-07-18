@@ -16,7 +16,8 @@ OBJECT := $(patsubst %.cpp, $(BUILD_DIR)/%.o, $(notdir $(SOURCE)))
 SUFFIXES += .d
 NODEPS := clean
 DEPFILES := $(patsubst %.cpp, $(BUILD_DIR)/%.d, $(notdir $(SOURCE)))
-# Check if there are any targets with dependencies
+# Check if any of the specified targets need dependency generation
+# or if there are no specified targets assume dependency generation
 ifneq ($(MAKECMDGOALS), $(filter $(NODEPS), $(MAKECMDGOALS)))
 	include $(DEPFILES)
 else ifeq ($(strip $(MAKECMDGOALS)), )
